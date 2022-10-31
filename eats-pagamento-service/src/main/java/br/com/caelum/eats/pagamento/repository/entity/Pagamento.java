@@ -9,14 +9,11 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Positive;
-import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 @Entity
 @Data
@@ -35,22 +32,23 @@ public class Pagamento {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotNull @Positive
+
+	@NonNull 
 	private BigDecimal valor;
 
-	@NotBlank  @Size(max=100)
+
 	private String nome;
 
-	@NotBlank  @Size(max=19)
+
 	private String numero;
 
-	@NotBlank  @Size(max=7)
+
 	private String expiracao;
 	
-	@NotBlank @Size(min=3, max=3)
+
 	private String codigo;
 
-	@NotNull
+
 	@Enumerated(EnumType.STRING)
 	private Status status;
 

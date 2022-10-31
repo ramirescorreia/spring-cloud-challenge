@@ -8,8 +8,47 @@ eureka:
     service-url:
       defaultZone: http://localhost:8761/eureka
       
-management:  endpoints:    web:      exposure:        include:        - "routes"
-        
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+      - id: restaurantes
+        uri: lb://restaurantes
+        predicates:
+        - Path=/restaurantes/**
+      - id: pedidos
+        uri: lb://pedidos
+        predicates:
+        - Path=/pedidos/**
+      - id: tipos-de-cozinha
+        uri: lb://tipos-de-cozinha
+        predicates:
+        - Path=/tipos-de-cozinha/**  
+      - id: admin
+        uri: lb://admin
+        predicates:
+        - Path=/admin/**
+      - id: formas-de-pagamento
+        uri: lb://formas-de-pagamento
+        predicates:
+        - Path=/formas-de-pagamento/**     
+      - id: user
+        uri: lb://user
+        predicates:
+        - Path=/user/**
+      - id: pagamentos
+        uri: lb://pagamentos
+        predicates:
+        - Path=/pagamentos/**
+      - id: parceiros
+        uri: lb://parceiros
+        predicates:
+        - Path=/parceiros/**     
 zuul:
   ignoredPatterns: /eats-auth/**
   
@@ -17,3 +56,5 @@ security:
   oauth2: 
     resource: 
       user-info-uri: http://localhost:8088/user
+      
+ 
