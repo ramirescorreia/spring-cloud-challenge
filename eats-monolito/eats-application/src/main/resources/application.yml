@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: eats-monolito
+  profiles:
+    active: default
+  cloud:
+    config:
+      uri: http://localhost:8888
+  config:
+    import: optional:configserver:http://localhost:8888/
+    
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka

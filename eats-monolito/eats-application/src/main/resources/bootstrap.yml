@@ -1,8 +1,0 @@
-spring:
-  application:
-    name: eats-monolito
-  profiles:
-    active: default
-  cloud:
-    config:
-      uri: http://localhost:8888

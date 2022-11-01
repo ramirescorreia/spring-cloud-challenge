@@ -1,8 +1,8 @@
 package br.com.caelum.eats.pagamento.gateway;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 import br.com.caelum.eats.pagamento.exception.AlteracaoPedidoException;
 import br.com.caelum.eats.pagamento.exception.ResourceNotFoundException;
@@ -17,11 +17,13 @@ import lombok.extern.slf4j.Slf4j;
 @AllArgsConstructor
 @Service
 public class PedidoRestClientFacade {
+	
+	@Autowired
+	private final PedidoFeignRestClient restClient;
 
-    private final PedidoFeignRestClient restClient;
-    private final PagamentoRepository pagamentoRepo;
+	@Autowired
+	private final PagamentoRepository pagamentoRepo;
 
-    @HystrixCommand(fallbackMethod = "notificaPagamentoDoPedidoFallback")
    public void notificaPagamentoDoPedido(Long pedidoId) {
 	   
         try {

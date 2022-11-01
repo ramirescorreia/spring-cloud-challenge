@@ -2,8 +2,6 @@ server:
   port: 8888
   
 spring:
-  application:
-    name: ConfigServer
   cloud:
     config:
       server:
@@ -12,6 +10,9 @@ spring:
           basedir: ../../spring-cloud-challenge-config
           cloneOnStart: true
           skipSslValidation: true
+          default-label: main
+          search-paths:
+          - 'eats-app' 
           
 eureka:
   client:
