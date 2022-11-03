@@ -9,7 +9,7 @@ spring:
   config:
     import: optional:configserver:http://localhost:8888/
   datasource:
-    url: jdbc:h2:mem:mydb
+    url: jdbc:h2:mem:mydbapplication
     username: sa
     password: password
     driverClassName: org.h2.Driver

@@ -17,10 +17,10 @@ spring:
         locator:
           enabled: true
       routes:
-      - id: restaurantes
-        uri: lb://restaurantes
+      - id: login
+        uri: http://localhost:9080/login
         predicates:
-        - Path=/restaurantes/**
+        - Path=/login/**
       - id: pedidos
         uri: lb://pedidos
         predicates:
@@ -48,7 +48,11 @@ spring:
       - id: parceiros
         uri: lb://parceiros
         predicates:
-        - Path=/parceiros/**     
+        - Path=/parceiros/**    
+      - id: login
+        uri: lb://login
+        predicates:
+        - Path=/login/**    
 zuul:
   ignoredPatterns: /eats-auth/**
   
