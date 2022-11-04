@@ -6,14 +6,12 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/rctbatista/spring-cloud-challenge-config
+          uri: https://github.com/pbarros1979/spring-cloud-challenge-config.git
           basedir: ../../spring-cloud-challenge-config
           cloneOnStart: true
           skipSslValidation: true
           default-label: main
-          search-paths:
-          - 'eats-app' 
-          
+           
 eureka:
   client:
     register-with-eureka: true

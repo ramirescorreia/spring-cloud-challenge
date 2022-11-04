@@ -1,24 +1,12 @@
 spring:
+  config:
+    import: configserver:http://localhost:8888
+  cloud:
+    config:
+      enabled: true
   application:
     name: eats-distancia-service
   profiles:
     active: default
-  cloud:
     config:
       uri: http://localhost:8888
-  config:
-    import: optional:configserver:http://localhost:8888/
-  datasource:
-    url: jdbc:h2:mem:mydbdistancia
-    username: sa
-    password: password
-    driverClassName: org.h2.Driver
-  h2:
-    console.enabled: true
-  jpa:
-    properties:
-      hibernate:
-        connection:
-          charSet: UTF-8
-    defer-datasource-initialization: false
-    database-platform: org.hibernate.dialect.H2Dialect

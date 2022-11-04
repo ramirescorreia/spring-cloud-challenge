@@ -1,6 +1,6 @@
 -- Chinês Long Fu
-INSERT INTO restaurante (id, aprovado, cnpj, nome, descricao, cep, endereco, taxa_de_entrega_em_reais, tempo_de_entrega_maximo_em_minutos, tempo_de_entrega_minimo_em_minutos, tipo_de_cozinha_id)
-values (1, true, '98444252000104', 'Long Fu', 'O melhor da China aqui do seu lado.', '70238500', 'ShC/SUL COMERCIO LOCAL QD 404-BL D LJ 17-ASA SUL' , 6, 25, 40, 1);
+INSERT INTO restaurante ( aprovado, cnpj, nome, descricao, cep, endereco, taxa_de_entrega_em_reais, tempo_de_entrega_maximo_em_minutos, tempo_de_entrega_minimo_em_minutos, tipo_de_cozinha_id)
+values ( true, '98444252000104', 'Long Fu', 'O melhor da China aqui do seu lado.', '70238500', 'ShC/SUL COMERCIO LOCAL QD 404-BL D LJ 17-ASA SUL' , 6, 25, 40, 1);
 
 INSERT INTO restaurante_forma_de_pagamento (restaurante_id, forma_de_pagamento_id) values (1, 1);
 INSERT INTO restaurante_forma_de_pagamento (restaurante_id, forma_de_pagamento_id) values (1, 2);
@@ -16,11 +16,11 @@ INSERT INTO horario_de_funcionamento (dia_da_semana, horario_de_abertura, horari
 INSERT INTO horario_de_funcionamento (dia_da_semana, horario_de_abertura, horario_de_fechamento, restaurante_id) values ('FRIDAY', '11:00:00', '23:00:00', 1);
 INSERT INTO horario_de_funcionamento (dia_da_semana, horario_de_abertura, horario_de_fechamento, restaurante_id) values ('SATURDAY', '11:00:00', '23:00:00', 1);
 
-INSERT INTO cardapio (id, restaurante_id) values (1, 1);
+INSERT INTO cardapio ( restaurante_id) values (1);
 
-INSERT INTO categoria_do_cardapio (id, nome, cardapio_id) values (1, 'ENTRADAS', 1);
-INSERT INTO categoria_do_cardapio (id, nome, cardapio_id) values (2, 'PRATOS PRINCIPAIS', 1);
-INSERT INTO categoria_do_cardapio (id, nome, cardapio_id) values (3, 'BEBIDAS', 1);
+INSERT INTO categoria_do_cardapio ( nome, cardapio_id) values ( 'ENTRADAS', 1);
+INSERT INTO categoria_do_cardapio ( nome, cardapio_id) values ( 'PRATOS PRINCIPAIS', 1);
+INSERT INTO categoria_do_cardapio ( nome, cardapio_id) values ( 'BEBIDAS', 1);
 
 -- ENTRADAS
 INSERT INTO item_do_cardapio (

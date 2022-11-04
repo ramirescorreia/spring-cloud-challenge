@@ -1,5 +1,5 @@
 CREATE TABLE pedido (
-  id bigint NOT NULL AUTO_INCREMENT,
+  id bigint AUTO_INCREMENT,
   data_hora datetime NOT NULL,
   status varchar NOT NULL,
   restaurante_id bigint NOT NULL,
