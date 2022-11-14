@@ -102,6 +102,12 @@
 			<artifactId>spring-boot-configuration-processor</artifactId>
 			<optional>true</optional>
 		</dependency>
+		
+		<dependency>
+			<groupId>biz.paluch.logging</groupId>
+			<artifactId>logstash-gelf</artifactId>
+			<version>1.15.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>
