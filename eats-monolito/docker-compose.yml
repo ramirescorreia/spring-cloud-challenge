@@ -1,6 +1,66 @@
 version: '3.4'
 
 services:
+  poc_registry:
+    container_name: eats-service-registry
+    image: eats-service-registry:0.0.1-SNAPSHOT
+    ports:
+      - 8761:8761
+    networks:
+      - eats-network
+           
+  poc_config_server:
+    container_name: eats-config-server
+    image: eats-config-server:0.0.1-SNAPSHOT
+    ports:
+      - 8888:8888
+    networks:
+      - eats-network
+    environment:
+      TZ: America/Sao_Paulo
+    depends_on:
+      poc_registry:
+        condition: service_healthy
+   
+  poc_application:
+    container_name: eats-application
+    image: eats-application:0.0.1-SNAPSHOT
+    ports:
+      - 8761:8761
+    networks:
+      - eats-network
+    environment:
+      TZ: America/Sao_Paulo
+    depends_on:
+      poc_config_server:
+        condition: service_healthy
+        
+  poc_distancia:
+    container_name: eats-distancia-service
+    image: eats-distancia-service:0.0.1-SNAPSHOT
+    ports:
+      - 8761:8761
+    networks:
+      - eats-network
+    environment:
+      TZ: America/Sao_Paulo
+    depends_on:
+      poc_config_server:
+        condition: service_healthy
+
+  poc_pagamento:
+    container_name: eats-pagamento-service
+    image: eats-pagamento-service:0.0.1-SNAPSHOT
+    ports:
+      - 8761:8761
+    networks:
+      - eats-network
+    environment:
+      TZ: America/Sao_Paulo
+    depends_on:
+      poc_config_server:
+        condition: service_healthy
+              
   zookeeper:
     image: docker.io/bitnami/zookeeper:3.8
     ports:
@@ -9,6 +69,7 @@ services:
       - "zookeeper_data:/bitnami"
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
+      
   kafka:
     image: docker.io/bitnami/kafka:3.3
     ports:
@@ -26,3 +87,7 @@ volumes:
     driver: local
   kafka_data:
     driver: local
+       
+networks:
+    eats-network:
+      driver: bridge
