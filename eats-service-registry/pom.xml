@@ -39,11 +39,6 @@
 			<artifactId>spring-native</artifactId>
 			<version>${spring-native.version}</version>
 		</dependency>
-		<dependency>
-		    <groupId>org.apache.tomcat.experimental</groupId>
-		    <artifactId>tomcat-embed-programmatic</artifactId>
-		    <version>10.1.1</version>
-		</dependency>
 	</dependencies>
 	
 	<dependencyManagement>
@@ -66,9 +61,9 @@
 				<configuration>
 					<classifier>${repackage.classifier}</classifier>
 					<image>
-						<builder>paketobuildpacks/builder:tiny</builder>
+						<builder>paketobuildpacks/builder:base</builder>
 						<env>
-							<BP_NATIVE_IMAGE>true</BP_NATIVE_IMAGE>
+							<BP_NATIVE_IMAGE>false</BP_NATIVE_IMAGE>
 						</env>
 					</image>
 					<excludes>
@@ -86,13 +81,12 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${maven-compiler-plugin.version}</version>
 				<configuration>
 					<source>${maven.compiler.source}</source>
 					<target>${maven.compiler.target}</target>
 				</configuration>
 			</plugin>
-			<plugin>
+<!--			<plugin>
 				<groupId>org.springframework.experimental</groupId>
 				<artifactId>spring-aot-maven-plugin</artifactId>
 				<version>${spring-native.version}</version>
@@ -111,6 +105,7 @@
 					</execution>
 				</executions>
 			</plugin>
+-->
 		</plugins>
 	</build>
 	<repositories>
