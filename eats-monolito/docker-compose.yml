@@ -67,6 +67,8 @@ services:
       - "2181:2181"
     volumes:
       - "zookeeper_data:/bitnami"
+    networks:
+      - eats-network
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
       
@@ -76,6 +78,8 @@ services:
       - "9092:9092"
     volumes:
       - "kafka_data:/bitnami"
+    networks:
+      - eats-network
     environment:
       - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
       - ALLOW_PLAINTEXT_LISTENER=yes
