@@ -7,7 +7,6 @@ spring:
       server:
         git:
           uri: https://github.com/pbarros1979/spring-cloud-challenge-config.git
-          basedir: ../../spring-cloud-challenge-config
           cloneOnStart: true
           skipSslValidation: true
           default-label: main

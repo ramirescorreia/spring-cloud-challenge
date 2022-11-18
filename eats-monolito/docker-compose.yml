@@ -25,7 +25,7 @@ services:
     container_name: eats-application
     image: eats-application:0.0.1-SNAPSHOT
     ports:
-      - 8761:8761
+      - 8080:8080
     networks:
       - eats-network
     environment:
@@ -37,7 +37,7 @@ services:
     container_name: eats-distancia-service
     image: eats-distancia-service:0.0.1-SNAPSHOT
     ports:
-      - 8761:8761
+      - 8082:8082
     networks:
       - eats-network
     environment:
@@ -49,7 +49,7 @@ services:
     container_name: eats-pagamento-service
     image: eats-pagamento-service:0.0.1-SNAPSHOT
     ports:
-      - 8761:8761
+      - 8081:8081
     networks:
       - eats-network
     environment:
