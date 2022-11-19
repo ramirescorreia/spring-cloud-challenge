@@ -1,61 +1,67 @@
 version: '3.4'
 
 services:
-  poc_registry:
-    container_name: eats-service-registry
+  service-registry:
+    container_name: service-registry
+    hostname: service-registry
     image: eats-service-registry:0.0.1-SNAPSHOT
     ports:
       - 8761:8761
     networks:
-      - eats-network
+      - app
+
            
-  poc_config_server:
-    container_name: eats-config-server
+  config-server:
+    container_name: config-server
+    hostname: config-server
     image: eats-config-server:0.0.1-SNAPSHOT
     ports:
       - 8888:8888
-    networks:
-      - eats-network
     environment:
       TZ: America/Sao_Paulo
     depends_on:
-      - poc_registry
+      - service-registry
+    networks:
+      - app
    
-  poc_application:
-    container_name: eats-application
+  application:
+    container_name: application
+    hostname: application
     image: eats-application:0.0.1-SNAPSHOT
     ports:
       - 8080:8080
-    networks:
-      - eats-network
     environment:
       TZ: America/Sao_Paulo
     depends_on:
-      - poc_config_server
+      - config-server
+    networks:
+      - app
         
-  poc_distancia:
-    container_name: eats-distancia-service
+  distancia-service:
+    container_name: distancia-service
+    hostname: distancia-service
     image: eats-distancia-service:0.0.1-SNAPSHOT
     ports:
       - 8082:8082
-    networks:
-      - eats-network
     environment:
       TZ: America/Sao_Paulo
     depends_on:
-      - poc_config_server
+      - config-server
+    networks:
+      - app
 
-  poc_pagamento:
-    container_name: eats-pagamento-service
+  pagamento-service:
+    container_name: pagamento-service
+    hostname: pagamento-service
     image: eats-pagamento-service:0.0.1-SNAPSHOT
     ports:
       - 8081:8081
-    networks:
-      - eats-network
     environment:
       TZ: America/Sao_Paulo
     depends_on:
-      - poc_config_server
+      - config-server
+    networks:
+      - app
               
   zookeeper:
     image: docker.io/bitnami/zookeeper:3.8
@@ -63,10 +69,10 @@ services:
       - "2181:2181"
     volumes:
       - "zookeeper_data:/bitnami"
-    networks:
-      - eats-network
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
+    networks:
+      - app
       
   kafka:
     image: docker.io/bitnami/kafka:3.3
@@ -74,20 +80,19 @@ services:
       - "9092:9092"
     volumes:
       - "kafka_data:/bitnami"
-    networks:
-      - eats-network
     environment:
       - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
       - ALLOW_PLAINTEXT_LISTENER=yes
     depends_on:
       - zookeeper
+    networks:
+      - app
 
 volumes:
   zookeeper_data:
     driver: local
   kafka_data:
     driver: local
-       
+  
 networks:
-    eats-network:
-      driver: bridge
+  app:

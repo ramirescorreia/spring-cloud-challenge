@@ -4,9 +4,13 @@ server:
 spring:
   cloud:
     config:
+      fail-fast: false
+      discovery.enabled: false
+      uri: http://config-server:8888
       server:
         git:
           uri: https://github.com/pbarros1979/spring-cloud-challenge-config.git
+          force-pull: true
           cloneOnStart: true
           skipSslValidation: true
           default-label: main
@@ -16,4 +20,4 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://host.docker.internal:8761/eureka
+      defaultZone: http://service-registry:8761/eureka

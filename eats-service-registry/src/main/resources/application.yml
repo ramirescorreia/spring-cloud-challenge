@@ -3,8 +3,7 @@ eureka:
     fetchRegistry: false
     registerWithEureka: false
     serviceUrl:
-      defaultZone: http://host.docker.internal:${server.port}/eureka/
-  instance:
-    hostname: localhost
+      defaultZone: http://service-registry:${server.port}/eureka
+
 server:
   port: 8761
