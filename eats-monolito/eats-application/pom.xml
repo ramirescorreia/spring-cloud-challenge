@@ -8,9 +8,9 @@
 	<artifactId>eats-application</artifactId>
 	
 	<properties>
-		<java.version>11</java.version>
-		<maven.compiler.source>11</maven.compiler.source>
-		<maven.compiler.target>11</maven.compiler.target>
+		<java.version>17</java.version>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
 		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
 		<!-- automatically run annotation processors within the incremental compilation -->
 		<m2e.apt.activation>jdt_apt</m2e.apt.activation>
@@ -18,7 +18,6 @@
 		<lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
 		<lombok.version>1.18.20</lombok.version>
 		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
-		<spring-boot.version>2.7.1</spring-boot.version>
 		<spring-cloud.version>2021.0.3</spring-cloud.version>
 		<spring-native.version>0.12.1</spring-native.version>
 	</properties>
@@ -160,6 +159,7 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>3.0.0-RC2</version>
 				<configuration>
 					<classifier>${repackage.classifier}</classifier>
 					<image>
@@ -191,6 +191,14 @@
 					<enabled>false</enabled>
 				</snapshots>
 			</repository>
+			<repository>
+				<id>spring-milestones</id>
+				<name>Spring milestones</name>
+				<url>https://repo.spring.io/milestone</url>
+				<snapshots>
+					<enabled>false</enabled>
+				</snapshots>
+			</repository>
 		</repositories>
 		<pluginRepositories>
 			<pluginRepository>
@@ -201,13 +209,21 @@
 					<enabled>false</enabled>
 				</snapshots>
 			</pluginRepository>
+			<pluginRepository>
+				<id>spring-milestones</id>
+				<name>Spring milestones</name>
+				<url>https://repo.spring.io/milestone</url>
+				<snapshots>
+					<enabled>false</enabled>
+				</snapshots>
+			</pluginRepository>
 		</pluginRepositories>
 		<profiles>
 			<profile>
 			<id>native</id>
 			<properties>
 				<repackage.classifier>exec</repackage.classifier>
-				<native-buildtools.version>0.9.13</native-buildtools.version>
+				<native-buildtools.version>0.9.14</native-buildtools.version>
 			</properties>
 			<dependencies>
 				<dependency>
