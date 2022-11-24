@@ -1,5 +1,6 @@
 package br.com.caelum.eats;
 
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
@@ -23,7 +24,7 @@ import br.com.caelum.eats.configuration.LoggingIntializer;
 public class EatsApplication extends SpringBootServletInitializer{
 
 	public static void main(String[] args) {
-		new SpringApplicationBuilder(EatsApplication.class).initializers(new LoggingIntializer()).run(args);
+		SpringApplication.run(EatsApplication.class, args);
 	}
 
 }

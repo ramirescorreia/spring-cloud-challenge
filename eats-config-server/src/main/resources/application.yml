@@ -9,7 +9,7 @@ spring:
       uri: http://config-server:8888
       server:
         git:
-          uri: https://github.com/pbarros1979/spring-cloud-challenge-config.git
+          uri: https://github.com/ramirescorreia/spring-cloud-challenge-config.git
           force-pull: true
           cloneOnStart: true
           skipSslValidation: true

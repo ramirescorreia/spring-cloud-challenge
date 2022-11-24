@@ -1,6 +1,6 @@
 spring:
   config:
-    import: configserver:http://config-server:8888
+    import: configserver:http://host.docker.internal:8888
   cloud:
     config:
       enabled: true
@@ -9,4 +9,4 @@ spring:
   profiles:
     active: native
     config:
-      uri: http://config-server:8888  
+      uri: http://config-server:8888

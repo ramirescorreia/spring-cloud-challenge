@@ -165,7 +165,6 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<version>3.0.0-RC2</version>
 				<configuration>
 					<classifier>${repackage.classifier}</classifier>
 					<image>
@@ -197,28 +196,12 @@
 					<enabled>false</enabled>
 				</snapshots>
 			</repository>
-			<repository>
-				<id>spring-milestones</id>
-				<name>Spring milestones</name>
-				<url>https://repo.spring.io/milestone</url>
-				<snapshots>
-					<enabled>false</enabled>
-				</snapshots>
-			</repository>
 		</repositories>
 		<pluginRepositories>
 			<pluginRepository>
 				<id>spring-releases</id>
 				<name>Spring Releases</name>
 				<url>https://repo.spring.io/release</url>
-				<snapshots>
-					<enabled>false</enabled>
-				</snapshots>
-			</pluginRepository>
-			<pluginRepository>
-				<id>spring-milestones</id>
-				<name>Spring milestones</name>
-				<url>https://repo.spring.io/milestone</url>
 				<snapshots>
 					<enabled>false</enabled>
 				</snapshots>
