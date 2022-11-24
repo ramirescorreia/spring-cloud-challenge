@@ -1,6 +1,6 @@
 spring:
   config:
-    import: configserver:http://host.docker.internal:8888
+    import: configserver:http://config-server:8888
   cloud:
     config:
       enabled: true
@@ -9,14 +9,5 @@ spring:
   profiles:
     active: default
     config:
-      uri: http://host.docker.internal:8888
-  datasource:
-    url: "jdbc:oracle:thin:@//localhost:1521/orcl"
-    username: system
-    password: password
-    driver-class-name: oracle.jdbc.OracleDriver
-  jpa:
-    database-platform: org.hibernate.dialect.Oracle12cDialect
-    hibernate:
-      ddl-auto: update
+      uri: http://config-server:8888
  

@@ -95,6 +95,11 @@ services:
       - 8081:8081
     environment:
       TZ: America/Sao_Paulo
+      SPRING_CONFIG_IMPORT: "configserver:http://config-server:8888"
+      SPRING_CLOUD_CONFIG_ENABLED: true
+      SPRING_APPLICATION_NAME: eats-distancia-service
+      SPRING_PROFILES_ACTIVE: default
+      SPRING_PROFILES_CONFIG_URI: http://config-server:8888
       SPRING_DATASOURCE_URL: jdbc:oracle:thin:@//db:1521/orcl
       SPRING_DATASOURCE_USERNAME: system
       SPRING_DATASOURCE_PASSWORD: password
@@ -107,6 +112,7 @@ services:
       - app
               
   zookeeper:
+    container_name: zookeeper
     image: docker.io/bitnami/zookeeper:3.8
     ports:
       - "2181:2181"
