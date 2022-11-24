@@ -7,6 +7,6 @@ spring:
   application:
     name: eats-monolito
   profiles:
-    active: native
+    active: default
     config:
-      uri: http://config-server:8888  
+      uri: http://config-server:8888

@@ -2,6 +2,7 @@ package br.com.caelum.eats.restaurante.gateway;
 
 import java.math.BigInteger;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.caelum.eats.restaurante.gateway.domain.RestauranteRequest;
@@ -14,6 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 @AllArgsConstructor
 public class DistanciaRestauranteRestClientFacade {
 	
+	@Autowired
 	private final DistanciaRestauranteFeignRestClient restClient;
 	
 	public void criaDistanciaRestaurante(RestauranteRequest request) {

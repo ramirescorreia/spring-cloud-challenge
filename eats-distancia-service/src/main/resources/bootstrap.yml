@@ -10,12 +10,3 @@ spring:
     active: default
     config:
       uri: http://config-server:8888
-  datasource:
-    url: "jdbc:oracle:thin:@//localhost:1521/orcl"
-    username: system
-    password: password
-    driver-class-name: oracle.jdbc.OracleDriver
-  jpa:
-    database-platform: org.hibernate.dialect.Oracle12cDialect
-    hibernate:
-      ddl-auto: update

@@ -12,6 +12,8 @@ import com.netflix.appinfo.MyDataCenterInfo;
 import com.netflix.discovery.shared.Application;
 
 import br.com.caelum.eats.configuration.LoggingIntializer;
+import br.com.caelum.eats.restaurante.gateway.DistanciaRestauranteFeignRestClient;
+import br.com.caelum.eats.restaurante.gateway.DistanciaRestauranteRestClientFacade;
 
 @EnableFeignClients
 @SpringBootApplication
@@ -19,7 +21,7 @@ import br.com.caelum.eats.configuration.LoggingIntializer;
 		"com.netflix.discove,ry.shared.Application",
 		"com.netflix.appinfo.InstanceInfo",
 		"com.netflix.appinfo.InstanceInfo$PortWrapper",
-		"com.netflix.appinfo.DataCenterInfo"
+		"com.netflix.appinfo.DataCenterInfo",
 })
 public class EatsApplication extends SpringBootServletInitializer{
 
