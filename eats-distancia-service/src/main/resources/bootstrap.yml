@@ -9,10 +9,7 @@ spring:
   profiles:
     active: default
     config:
-<<<<<<< Updated upstream:eats-distancia-service/src/main/resources/bootstrap.yml
       uri: http://config-server:8888
-=======
-      uri: http://host.docker.internal:8888
   datasource:
     url: "jdbc:oracle:thin:@//localhost:1521/orcl"
     username: system
@@ -22,4 +19,3 @@ spring:
     database-platform: org.hibernate.dialect.Oracle12cDialect
     hibernate:
       ddl-auto: update
->>>>>>> Stashed changes:eats-distancia-service/src/main/resources/application.yml

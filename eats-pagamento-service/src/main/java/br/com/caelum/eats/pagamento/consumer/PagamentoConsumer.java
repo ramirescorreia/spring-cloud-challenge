@@ -25,7 +25,7 @@ public class PagamentoConsumer {
 
 	@KafkaListener(topicPartitions = @TopicPartition(topic = "${kafka.topics.pedido.confirma.pagamento}", partitions = PARTITION_EATS_PAGAMENTO))
 	public void confirmaPagamentoConsumer(@Payload Pagamento pagamentoEvent,
-			@Header(KafkaHeaders.RECEIVED_PARTITION) String partition) {
+			@Header(KafkaHeaders.RECEIVED_PARTITION_ID) String partition) {
 		log.info("Evento de confirmação de pedido recebido. [id: {}]", pagamentoEvent.getId());
 		pedidoClient.notificaPagamentoDoPedido(pagamentoEvent.getPedidoId());
 		pagamentoRepo.save(pagamentoEvent);

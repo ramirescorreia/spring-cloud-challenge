@@ -1,7 +1,5 @@
 package br.com.caelum.eats;
 
-import org.flywaydb.core.api.logging.LogCreator;
-import org.flywaydb.core.internal.logging.log4j2.Log4j2LogCreator;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
@@ -16,13 +14,11 @@ import br.com.caelum.eats.configuration.LoggingIntializer;
 
 @EnableFeignClients
 @SpringBootApplication
-@TypeHint(types = { Application.class, InstanceInfo.class, MyDataCenterInfo.class, Log4j2LogCreator.class, LogCreator.class }, typeNames = {
+@TypeHint(types = { Application.class, InstanceInfo.class, MyDataCenterInfo.class }, typeNames = {
 		"com.netflix.discove,ry.shared.Application",
 		"com.netflix.appinfo.InstanceInfo",
 		"com.netflix.appinfo.InstanceInfo$PortWrapper",
-		"com.netflix.appinfo.DataCenterInfo",
-		"org.flywaydb.core.internal.logging.log4j2.Log4j2LogCreator",
-		"org.flywaydb.core.api.logging.LogCreator"
+		"com.netflix.appinfo.DataCenterInfo"
 })
 public class EatsApplication extends SpringBootServletInitializer{
 
