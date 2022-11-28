@@ -22,8 +22,8 @@
 		<lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
 		<lombok.version>1.18.20</lombok.version>
 		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
-		<spring-cloud.version>2021.0.3</spring-cloud.version>
-		<spring-native.version>0.12.1</spring-native.version>
+		<spring-cloud.version>2020.0.5</spring-cloud.version>
+		<spring-native.version>0.10.5</spring-native.version>
 	</properties>
 	
 	<modules>

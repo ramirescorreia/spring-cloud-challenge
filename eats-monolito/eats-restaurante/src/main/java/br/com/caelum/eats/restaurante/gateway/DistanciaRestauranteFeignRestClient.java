@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 import br.com.caelum.eats.restaurante.gateway.domain.RestauranteRequest;
 
-@FeignClient("eats-distancia-service")
+@FeignClient(name="distancia", url="http://distancia-service:8082")
 public interface DistanciaRestauranteFeignRestClient {
 
 	@PostMapping("/restaurantes")
