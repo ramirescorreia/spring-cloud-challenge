@@ -46,12 +46,6 @@
 	        <scope>compile</scope>
 	        <optional>true</optional>
 	    </dependency>
-	    <dependency>
-	        <groupId>io.goodforgod</groupId>
-	        <artifactId>graalvm-hint-processor</artifactId>
-	        <version>0.20.0</version>
-	        <scope>provided</scope>
-	    </dependency>
 	</dependencies>
 		<build>
 		<plugins>
@@ -77,11 +71,6 @@
 							<artifactId>mapstruct-processor</artifactId>
 							<version>${org.mapstruct.version}</version>
 						</path>
-						<path>
-                        	<groupId>io.goodforgod</groupId>
-                        	<artifactId>graalvm-hint-processor</artifactId>
-                        	<version>0.20.0</version>
-                    	</path>
 					</annotationProcessorPaths>
 				</configuration>
 			</plugin>

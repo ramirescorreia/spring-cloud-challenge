@@ -133,11 +133,6 @@
 							<artifactId>mapstruct-processor</artifactId>
 							<version>${org.mapstruct.version}</version>
 						</path>
-						<path>
-                        	<groupId>io.goodforgod</groupId>
-                        	<artifactId>graalvm-hint-processor</artifactId>
-                        	<version>0.20.0</version>
-                    	</path>
 					</annotationProcessorPaths>
 				</configuration>
 			</plugin>
@@ -169,7 +164,6 @@
 						<builder>paketobuildpacks/builder:tiny</builder>
 						<env>
 							<BP_NATIVE_IMAGE>true</BP_NATIVE_IMAGE>
-							<!--<BPE_APPEND_JAVA_TOOL_OPTIONS>-H:DynamicProxyConfigurationFiles=resources.json</BPE_APPEND_JAVA_TOOL_OPTIONS>-->
 							<BP_NATIVE_IMAGE_BUILD_ARGUMENTS>-H:DynamicProxyConfigurationResources=dynamic-proxy.json</BP_NATIVE_IMAGE_BUILD_ARGUMENTS>
 						</env>
 					</image>
