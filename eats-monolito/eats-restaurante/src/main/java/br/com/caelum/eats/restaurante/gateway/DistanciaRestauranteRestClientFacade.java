@@ -16,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 public class DistanciaRestauranteRestClientFacade {
 	
 	@Autowired
-	private final DistanciaRestauranteFeignRestClient restClient;
+	private final DistanciaRestauranteFeignRestClientImpl restClient;
 	
 	public void criaDistanciaRestaurante(RestauranteRequest request) {
 		   
