@@ -55,7 +55,7 @@ public class LoggingIntializer implements ApplicationContextInitializer<Configur
 		gelfAppender.start();
 		
 		Logger log = logContext.getLogger(Logger.ROOT_LOGGER_NAME);
-		log.setLevel(Level.DEBUG);
+		log.setLevel(Level.INFO);
 		log.addAppender(consoleAppender);
 		log.addAppender(gelfAppender);
 	}

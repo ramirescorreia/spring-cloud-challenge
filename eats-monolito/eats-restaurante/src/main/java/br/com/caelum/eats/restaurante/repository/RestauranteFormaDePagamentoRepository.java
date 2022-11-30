@@ -9,7 +9,6 @@ import org.springframework.data.repository.query.Param;
 import br.com.caelum.eats.administrativo.FormaDePagamento;
 import br.com.caelum.eats.restaurante.repository.entity.Restaurante;
 import br.com.caelum.eats.restaurante.repository.entity.RestauranteFormaDePagamento;
-import br.com.caelum.eats.restaurante.repository.entity.RestauranteFormaDePagamento.RestauranteFormaDePagamentoId;
 
 public interface RestauranteFormaDePagamentoRepository extends JpaRepository<RestauranteFormaDePagamento, RestauranteFormaDePagamento.RestauranteFormaDePagamentoId> {
 

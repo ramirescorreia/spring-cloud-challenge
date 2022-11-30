@@ -19,7 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 public class PedidoRestClientFacade {
 	
 	@Autowired
-	private final PedidoFeignRestClient restClient;
+	private final PedidoFeignRestClientImpl restClient;
 
 	@Autowired
 	private final PagamentoRepository pagamentoRepo;

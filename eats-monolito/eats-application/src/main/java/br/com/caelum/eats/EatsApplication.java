@@ -1,8 +1,8 @@
 package br.com.caelum.eats;
 
 import org.springframework.aop.scope.ScopedProxyFactoryBean;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.cloud.openfeign.FeignClientsConfiguration;
 import org.springframework.cloud.openfeign.HttpClient5DisabledConditions;
@@ -13,6 +13,7 @@ import com.netflix.appinfo.InstanceInfo;
 import com.netflix.appinfo.MyDataCenterInfo;
 import com.netflix.discovery.shared.Application;
 
+import br.com.caelum.eats.configuration.LoggingIntializer;
 import br.com.caelum.eats.restaurante.config.FeignConfig;
 
 @AotProxyHint(targetClass=br.com.caelum.eats.configuration.AppConfiguration.class, interfaces={org.springframework.aop.scope.ScopedObject.class, 
@@ -34,8 +35,8 @@ import br.com.caelum.eats.restaurante.config.FeignConfig;
 public class EatsApplication extends SpringBootServletInitializer{
 
 	public static void main(String[] args) {
-		//new SpringApplicationBuilder(EatsApplication.class).initializers(new LoggingIntializer()).run(args);
-		SpringApplication.run(EatsApplication.class, args);
+		new SpringApplicationBuilder(EatsApplication.class).initializers(new LoggingIntializer()).run(args);
+		//SpringApplication.run(EatsApplication.class, args);
 	}
 
 }
