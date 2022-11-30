@@ -9,21 +9,26 @@ import org.springframework.cloud.openfeign.HttpClient5DisabledConditions;
 import org.springframework.nativex.hint.AotProxyHint;
 import org.springframework.nativex.hint.TypeHint;
 
+import com.netflix.appinfo.InstanceInfo;
+import com.netflix.appinfo.MyDataCenterInfo;
+import com.netflix.discovery.shared.Application;
+
 import br.com.caelum.eats.restaurante.config.FeignConfig;
 
 @AotProxyHint(targetClass=br.com.caelum.eats.configuration.AppConfiguration.class, interfaces={org.springframework.aop.scope.ScopedObject.class, 
         java.io.Serializable.class, org.springframework.aop.framework.AopInfrastructureBean.class})
-@TypeHint(types = {HttpClient5DisabledConditions.class, ScopedProxyFactoryBean.class, FeignConfig.class, FeignClientsConfiguration.class}, typeNames = {
-"com.netflix.discove,ry.shared.Application",
-"com.netflix.appinfo.InstanceInfo",
-"com.netflix.appinfo.InstanceInfo$PortWrapper",
-"com.netflix.appinfo.DataCenterInfo",
-"org.springframework.aop.scope",
-"org.springframework.cloud.openfeign",
-"brave.kafka.clients.TracingProducer",
-"brave.kafka.clients.TracingConsumer",
-"br.com.caelum.eats.configuration",
-"br.com.caelum.eats.restaurante"
+@TypeHint(types = {Application.class, InstanceInfo.class, MyDataCenterInfo.class, HttpClient5DisabledConditions.class, ScopedProxyFactoryBean.class, 
+		FeignConfig.class, FeignClientsConfiguration.class}, typeNames = {
+	"com.netflix.discove,ry.shared.Application",
+	"com.netflix.appinfo.InstanceInfo",
+	"com.netflix.appinfo.InstanceInfo$PortWrapper",
+	"com.netflix.appinfo.DataCenterInfo",
+	"org.springframework.aop.scope",
+	"org.springframework.cloud.openfeign",
+	"brave.kafka.clients.TracingProducer",
+	"brave.kafka.clients.TracingConsumer",
+	"br.com.caelum.eats.configuration",
+	"br.com.caelum.eats.restaurante"
 })
 @SpringBootApplication
 public class EatsApplication extends SpringBootServletInitializer{

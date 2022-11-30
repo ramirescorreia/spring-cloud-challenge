@@ -32,7 +32,8 @@ services:
        ORACLE_USER: system
        ORACLE_PDB: orcl
     volumes:
-      - "C:/temp/oracledata:/opt/oracle/oradata"
+      #- "C:/temp/oracledata:/opt/oracle/oradata"
+      - "$HOME/.oradata:/opt/oracle/oradata"
     ports:
       - 1521:1521
       - 5500:5500
