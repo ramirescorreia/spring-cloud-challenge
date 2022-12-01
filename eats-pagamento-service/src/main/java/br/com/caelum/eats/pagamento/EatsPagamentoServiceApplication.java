@@ -1,8 +1,8 @@
 package br.com.caelum.eats.pagamento;
 
 import org.springframework.aop.scope.ScopedProxyFactoryBean;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.openfeign.FeignClientsConfiguration;
 import org.springframework.cloud.openfeign.HttpClient5DisabledConditions;
 import org.springframework.nativex.hint.TypeHint;
@@ -12,6 +12,7 @@ import com.netflix.appinfo.MyDataCenterInfo;
 import com.netflix.discovery.shared.Application;
 
 import br.com.caelum.eats.pagamento.config.FeignConfig;
+import br.com.caelum.eats.pagamento.config.LoggingIntializer;
 
 @TypeHint(types = {Application.class, InstanceInfo.class, MyDataCenterInfo.class, HttpClient5DisabledConditions.class, ScopedProxyFactoryBean.class, 
 		FeignConfig.class, FeignClientsConfiguration.class}, typeNames = {
@@ -28,8 +29,7 @@ import br.com.caelum.eats.pagamento.config.FeignConfig;
 public class EatsPagamentoServiceApplication {
 
 	public static void main(String[] args) {
-		//new SpringApplicationBuilder(EatsPagamentoServiceApplication.class).initializers(new LoggingIntializer()).run(args);
-		SpringApplication.run(EatsPagamentoServiceApplication.class, args);
+		new SpringApplicationBuilder(EatsPagamentoServiceApplication.class).initializers(new LoggingIntializer()).run(args);
 	}
 
 }
