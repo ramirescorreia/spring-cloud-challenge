@@ -6,7 +6,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>eats-application</artifactId>
-	
+
 	<properties>
 		<java.version>17</java.version>
 		<maven.compiler.source>17</maven.compiler.source>
@@ -18,10 +18,10 @@
 		<lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
 		<lombok.version>1.18.20</lombok.version>
 		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
-		<spring-cloud.version>2021.0.3</spring-cloud.version>
+		<spring-cloud.version>2022.0.0-RC2</spring-cloud.version>
 		<spring-native.version>0.12.1</spring-native.version>
 	</properties>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.experimental</groupId>
@@ -45,7 +45,7 @@
 			<artifactId>eats-pedido</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -60,13 +60,6 @@
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<optional>true</optional>
-		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
@@ -89,8 +82,8 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-sleuth</artifactId>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-tracing</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
@@ -98,11 +91,10 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-configuration-processor</artifactId>
-			<optional>true</optional>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-bootstrap</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>biz.paluch.logging</groupId>
 			<artifactId>logstash-gelf</artifactId>
@@ -182,44 +174,52 @@
 			</plugin>
 		</plugins>
 	</build>
-		<repositories>
-			<repository>
-				<id>spring-releases</id>
-				<name>Spring Releases</name>
-				<url>https://repo.spring.io/release</url>
-				<snapshots>
-					<enabled>false</enabled>
-				</snapshots>
-			</repository>
-			<repository>
-				<id>spring-milestones</id>
-				<name>Spring milestones</name>
-				<url>https://repo.spring.io/milestone</url>
-				<snapshots>
-					<enabled>false</enabled>
-				</snapshots>
-			</repository>
-		</repositories>
-		<pluginRepositories>
-			<pluginRepository>
-				<id>spring-releases</id>
-				<name>Spring Releases</name>
-				<url>https://repo.spring.io/release</url>
-				<snapshots>
-					<enabled>false</enabled>
-				</snapshots>
-			</pluginRepository>
-			<pluginRepository>
-				<id>spring-milestones</id>
-				<name>Spring milestones</name>
-				<url>https://repo.spring.io/milestone</url>
-				<snapshots>
-					<enabled>false</enabled>
-				</snapshots>
-			</pluginRepository>
-		</pluginRepositories>
-		<profiles>
-			<profile>
+	<repositories>
+		<repository>
+			<id>spring-releases</id>
+			<name>Spring Releases</name>
+			<url>https://repo.spring.io/release</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>netflix-candidates</id>
+			<name>Netflix Candidates</name>
+			<url>https://artifactory-oss.prod.netflix.net/artifactory/maven-oss-candidates</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>spring-releases</id>
+			<name>Spring Releases</name>
+			<url>https://repo.spring.io/release</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+		<pluginRepository>
+			<id>spring-milestones</id>
+			<name>Spring milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+	<profiles>
+		<profile>
 			<id>native</id>
 			<properties>
 				<repackage.classifier>exec</repackage.classifier>

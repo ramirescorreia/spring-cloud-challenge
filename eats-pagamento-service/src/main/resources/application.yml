@@ -1,13 +1,2 @@
-spring:
-  config:
-    import: configserver:http://host.docker.internal:8888
-  cloud:
-    config:
-      enabled: true
-  application:
-    name: eats-pagamento-service
-  profiles:
-    active: default
-    config:
-      uri: http://host.docker.internal:8888
+
  

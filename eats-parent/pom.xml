@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.0.0-RC2</version>
+		<version>3.0.1-SNAPSHOT</version>
 		<relativePath/>
 	</parent>
 	<groupId>br.com.caelum</groupId>
@@ -24,8 +24,8 @@
 		<lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
 		<lombok.version>1.18.20</lombok.version>
 		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
-		<spring-boot.version>3.0.0-RC2</spring-boot.version>
-		<spring-cloud.version>2021.0.3</spring-cloud.version>
+		<spring-boot.version>3.0.1-SNAPSHOT</spring-boot.version>
+		<spring-cloud.version>2022.0.0-RC2</spring-cloud.version>
 	</properties>
 
 	<dependencyManagement>
@@ -73,5 +73,14 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</repository>
+		<repository>
+			<id>spring-snapshots</id>
+			<name>Spring Snapshots</name>
+			<url>https://repo.spring.io/snapshot</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+		</repository>
+
 	</repositories>
 </project>

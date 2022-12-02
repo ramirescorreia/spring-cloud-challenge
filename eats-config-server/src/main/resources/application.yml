@@ -2,6 +2,8 @@ server:
   port: 8888
   
 spring:
+  application:
+    name: eats-config-server
   cloud:
     config:
       fail-fast: false

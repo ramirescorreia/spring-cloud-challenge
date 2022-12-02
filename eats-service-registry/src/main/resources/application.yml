@@ -1,4 +1,6 @@
 eureka:
+  server:
+    enableSelfPreservation: false
   client:
     fetchRegistry: false
     registerWithEureka: false
