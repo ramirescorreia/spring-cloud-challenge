@@ -6,7 +6,6 @@
 		<groupId>br.com.caelum</groupId>
 		<artifactId>eats-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<artifactId>eats</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
