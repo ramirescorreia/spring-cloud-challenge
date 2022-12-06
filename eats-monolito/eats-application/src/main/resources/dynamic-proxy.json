@@ -1,3 +1,5 @@
 [
- {"interfaces":[ "br.com.caelum.eats.restaurante.gateway.DistanciaRestauranteFeignRestClient"]}
+ {"interfaces":[ "br.com.caelum.eats.restaurante.gateway.DistanciaRestauranteFeignRestClient"]},
+ {"interfaces": ["org.springframework.web.bind.annotation.ResponseStatus"]},
+ {"interfaces": ["org.springframework.core.annotation.SynthesizedAnnotation"]} 
 ]

@@ -2,14 +2,11 @@ package br.com.caelum.eats.restaurante.gateway;
 
 import java.math.BigInteger;
 
-import org.springframework.cloud.openfeign.FeignClient;
-
 import br.com.caelum.eats.restaurante.gateway.domain.RestauranteRequest;
 import feign.Headers;
 import feign.Param;
 import feign.RequestLine;
 
-@FeignClient("eats-distancia-service")
 public interface DistanciaRestauranteFeignRestClient {
 
 
