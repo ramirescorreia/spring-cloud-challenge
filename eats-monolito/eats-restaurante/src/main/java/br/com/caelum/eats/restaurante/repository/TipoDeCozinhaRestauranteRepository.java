@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import br.com.caelum.eats.administrativo.TipoDeCozinha;
 
-public interface TipoDeCozinhaRepository extends JpaRepository<TipoDeCozinha, Long>{
+public interface TipoDeCozinhaRestauranteRepository extends JpaRepository<TipoDeCozinha, Long>{
 
 }

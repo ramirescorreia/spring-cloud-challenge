@@ -14,21 +14,21 @@ import br.com.caelum.eats.restaurante.gateway.DistanciaRestauranteRestClientFaca
 import br.com.caelum.eats.restaurante.mapper.RestauranteMapper;
 import br.com.caelum.eats.restaurante.repository.CardapioRepository;
 import br.com.caelum.eats.restaurante.repository.RestauranteRepository;
-import br.com.caelum.eats.restaurante.repository.TipoDeCozinhaRepository;
+import br.com.caelum.eats.restaurante.repository.TipoDeCozinhaRestauranteRepository;
 import br.com.caelum.eats.restaurante.repository.entity.Cardapio;
 import br.com.caelum.eats.restaurante.repository.entity.Restaurante;
 
 @Service
 public class RestauranteService {
 
-	private final TipoDeCozinhaRepository tipoCozinhaRepo;
+	private final TipoDeCozinhaRestauranteRepository tipoCozinhaRepo;
 	private final RestauranteRepository restauranteRepo;
 	private final CardapioRepository cardapioRepo;
 	private final RestauranteMapper mapper;
 	private final DistanciaRestauranteRestClientFacade restClient;
 
 	@Autowired
-	public RestauranteService(TipoDeCozinhaRepository tipoCozRepo, RestauranteRepository repo, CardapioRepository cardapioRepo, RestauranteMapper mapper,
+	public RestauranteService(TipoDeCozinhaRestauranteRepository tipoCozRepo, RestauranteRepository repo, CardapioRepository cardapioRepo, RestauranteMapper mapper,
 			DistanciaRestauranteRestClientFacade restClient) {
 		this.tipoCozinhaRepo = tipoCozRepo;
 		this.restauranteRepo = repo;

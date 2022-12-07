@@ -9,6 +9,7 @@ import org.springframework.cloud.openfeign.HttpClient5DisabledConditions;
 import org.springframework.core.annotation.SynthesizedAnnotation;
 import org.springframework.nativex.hint.AotProxyHint;
 import org.springframework.nativex.hint.JdkProxyHint;
+import org.springframework.nativex.hint.NativeHint;
 import org.springframework.nativex.hint.TypeHint;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,10 +26,10 @@ import com.netflix.discovery.shared.Application;
 import br.com.caelum.eats.configuration.LoggingIntializer;
 import br.com.caelum.eats.restaurante.config.FeignConfig;
 import br.com.caelum.eats.restaurante.gateway.DistanciaRestauranteFeignRestClient;
-import br.com.caelum.eats.restaurante.gateway.DistanciaRestauranteFeignRestClientImpl;
+
+@NativeHint(trigger = FeignConfig.class)
 
 @JdkProxyHint(types = {DistanciaRestauranteFeignRestClient.class})
-@JdkProxyHint(types = {DistanciaRestauranteFeignRestClientImpl.class})
 @JdkProxyHint(types = {PathVariable.class, SynthesizedAnnotation.class})
 @JdkProxyHint(types = {RequestHeader.class, SynthesizedAnnotation.class})
 @JdkProxyHint(types = {RequestBody.class, SynthesizedAnnotation.class})
@@ -47,9 +48,11 @@ import br.com.caelum.eats.restaurante.gateway.DistanciaRestauranteFeignRestClien
 	"com.netflix.appinfo.InstanceInfo$PortWrapper",
 	"com.netflix.appinfo.DataCenterInfo",
 	"org.springframework.aop.scope",
+	"org.springframework.cloud.openfeign.FeignClientSpecification",
 	"org.springframework.web.bind.annotation",
 	"org.springframework.core.annotation",
 	"org.springframework.cloud.openfeign",
+	"org.springframework.boot.autoconfigure.condition",
 	"brave.kafka.clients.TracingProducer",
 	"brave.kafka.clients.TracingConsumer",
 	"br.com.caelum.eats.configuration",
@@ -62,5 +65,4 @@ public class EatsApplication extends SpringBootServletInitializer{
 		new SpringApplicationBuilder(EatsApplication.class).initializers(new LoggingIntializer()).run(args);
 		//SpringApplication.run(EatsApplication.class, args);
 	}
-
 }
