@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 
 
 @Slf4j
-@Service
+@Service(value = "distRestService")
 @AllArgsConstructor
 public class DistanciaRestauranteRestClientFacade {
 	
