@@ -25,7 +25,7 @@ public class DistanciaRestauranteFeignRestClientImpl {
 	@Autowired
 	public DistanciaRestauranteFeignRestClientImpl(Decoder decoder, Encoder encoder, Client client) {
 		this.feignRestClientInterface = Feign.builder().client(client).encoder(encoder).decoder(decoder)
-				.target(DistanciaRestauranteFeignRestClient.class, "http://distancia-service:8082");
+				.target(DistanciaRestauranteFeignRestClient.class, "http://eats-distancia-service:8082");
 	}
 	
 	@PostMapping("/restaurantes")

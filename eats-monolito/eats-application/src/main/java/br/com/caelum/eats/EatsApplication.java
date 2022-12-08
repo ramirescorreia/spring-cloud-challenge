@@ -4,6 +4,7 @@ import org.springframework.aop.scope.ScopedProxyFactoryBean;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.cloud.loadbalancer.annotation.LoadBalancerClientConfiguration;
 import org.springframework.cloud.openfeign.FeignClientsConfiguration;
 import org.springframework.cloud.openfeign.HttpClient5DisabledConditions;
 import org.springframework.core.annotation.SynthesizedAnnotation;
@@ -23,9 +24,14 @@ import com.netflix.appinfo.InstanceInfo;
 import com.netflix.appinfo.MyDataCenterInfo;
 import com.netflix.discovery.shared.Application;
 
+import br.com.caelum.eats.configuration.AppConfiguration;
 import br.com.caelum.eats.configuration.LoggingIntializer;
 import br.com.caelum.eats.restaurante.config.FeignConfig;
 import br.com.caelum.eats.restaurante.gateway.DistanciaRestauranteFeignRestClient;
+import br.com.caelum.eats.restaurante.gateway.domain.RestauranteRequest;
+import feign.Client;
+import feign.codec.Decoder;
+import feign.codec.Encoder;
 
 @NativeHint(trigger = FeignConfig.class)
 
@@ -38,11 +44,12 @@ import br.com.caelum.eats.restaurante.gateway.DistanciaRestauranteFeignRestClien
 @JdkProxyHint(types = {PostMapping.class, SynthesizedAnnotation.class})
 @JdkProxyHint(types = {PutMapping.class, SynthesizedAnnotation.class})
 
-@AotProxyHint(targetClass=br.com.caelum.eats.configuration.AppConfiguration.class, interfaces={org.springframework.aop.scope.ScopedObject.class, 
+@AotProxyHint(targetClass=AppConfiguration.class, interfaces={org.springframework.aop.scope.ScopedObject.class, 
         java.io.Serializable.class, org.springframework.aop.framework.AopInfrastructureBean.class})
 
 @TypeHint(types = {Application.class, InstanceInfo.class, MyDataCenterInfo.class, HttpClient5DisabledConditions.class, ScopedProxyFactoryBean.class, 
-		FeignConfig.class, FeignClientsConfiguration.class}, typeNames = {
+		FeignConfig.class, FeignClientsConfiguration.class, LoadBalancerClientConfiguration.class, 
+		Decoder.class, Encoder.class, Client.class, RestauranteRequest.class}, typeNames = {
 	"com.netflix.discove,ry.shared.Application",
 	"com.netflix.appinfo.InstanceInfo",
 	"com.netflix.appinfo.InstanceInfo$PortWrapper",
@@ -50,6 +57,7 @@ import br.com.caelum.eats.restaurante.gateway.DistanciaRestauranteFeignRestClien
 	"org.springframework.aop.scope",
 	"org.springframework.cloud.openfeign.FeignClientSpecification",
 	"org.springframework.web.bind.annotation",
+	"org.springframework.cloud.loadbalancer.annotation",
 	"org.springframework.core.annotation",
 	"org.springframework.cloud.openfeign",
 	"org.springframework.boot.autoconfigure.condition",
