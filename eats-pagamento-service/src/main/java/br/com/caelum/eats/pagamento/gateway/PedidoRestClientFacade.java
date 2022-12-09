@@ -3,10 +3,8 @@ package br.com.caelum.eats.pagamento.gateway;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 import br.com.caelum.eats.pagamento.exception.AlteracaoPedidoException;
 import br.com.caelum.eats.pagamento.exception.ResourceNotFoundException;
-import br.com.caelum.eats.pagamento.gateway.domain.PedidoMudancaDeStatusRequest;
 import br.com.caelum.eats.pagamento.repository.PagamentoRepository;
 import br.com.caelum.eats.pagamento.repository.entity.Pagamento;
 import feign.FeignException;
@@ -17,9 +15,6 @@ import lombok.extern.slf4j.Slf4j;
 @AllArgsConstructor
 @Service
 public class PedidoRestClientFacade {
-	
-	@Autowired
-	private final PedidoFeignRestClientImpl restClient;
 
 	@Autowired
 	private final PagamentoRepository pagamentoRepo;
@@ -27,7 +22,7 @@ public class PedidoRestClientFacade {
    public void notificaPagamentoDoPedido(Long pedidoId) {
 	   
         try {
-        	restClient.notificaPagamentoDoPedido(pedidoId, new PedidoMudancaDeStatusRequest("pago".toUpperCase()));
+        	///restClient.notificaPagamentoDoPedido(pedidoId, new PedidoMudancaDeStatusRequest("pago".toUpperCase()));
 		} catch (FeignException e) {
 			log.error("Erro ao chamar API para notificação do pagamento do pedido.", e);
 			throw new AlteracaoPedidoException(pedidoId, e);

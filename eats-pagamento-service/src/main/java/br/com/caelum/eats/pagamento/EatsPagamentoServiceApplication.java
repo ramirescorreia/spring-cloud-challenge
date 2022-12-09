@@ -4,7 +4,6 @@ import org.springframework.aop.scope.ScopedProxyFactoryBean;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.cloud.openfeign.FeignClientsConfiguration;
 import org.springframework.cloud.openfeign.HttpClient5DisabledConditions;
 import org.springframework.core.annotation.SynthesizedAnnotation;
 import org.springframework.nativex.hint.JdkProxyHint;
@@ -21,14 +20,9 @@ import com.netflix.appinfo.InstanceInfo;
 import com.netflix.appinfo.MyDataCenterInfo;
 import com.netflix.discovery.shared.Application;
 
-import br.com.caelum.eats.pagamento.config.FeignConfig;
 import br.com.caelum.eats.pagamento.config.LoggingIntializer;
-import br.com.caelum.eats.pagamento.gateway.PedidoFeignRestClient;
-import br.com.caelum.eats.pagamento.gateway.PedidoFeignRestClientImpl;
 
 
-@JdkProxyHint(types = {PedidoFeignRestClient.class})
-@JdkProxyHint(types = {PedidoFeignRestClientImpl.class})
 @JdkProxyHint(types = {PathVariable.class, SynthesizedAnnotation.class})
 @JdkProxyHint(types = {RequestHeader.class, SynthesizedAnnotation.class})
 @JdkProxyHint(types = {RequestBody.class, SynthesizedAnnotation.class})
@@ -37,8 +31,7 @@ import br.com.caelum.eats.pagamento.gateway.PedidoFeignRestClientImpl;
 @JdkProxyHint(types = {PostMapping.class, SynthesizedAnnotation.class})
 @JdkProxyHint(types = {PutMapping.class, SynthesizedAnnotation.class})
 
-@TypeHint(types = {Application.class, InstanceInfo.class, MyDataCenterInfo.class, HttpClient5DisabledConditions.class, ScopedProxyFactoryBean.class, 
-		FeignConfig.class, FeignClientsConfiguration.class}, typeNames = {
+@TypeHint(types = {Application.class, InstanceInfo.class, MyDataCenterInfo.class, HttpClient5DisabledConditions.class, ScopedProxyFactoryBean.class}, typeNames = {
 	"com.netflix.discove,ry.shared.Application",
 	"com.netflix.appinfo.InstanceInfo",
 	"com.netflix.appinfo.InstanceInfo$PortWrapper",
