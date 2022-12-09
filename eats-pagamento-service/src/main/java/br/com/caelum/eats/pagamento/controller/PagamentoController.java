@@ -69,6 +69,8 @@ public class PagamentoController {
 		pagamento.setStatus(Pagamento.Status.CONFIRMADO);
 		kafkaTemplate.send(confirmaPagamentoTopic, PARTITION_EATS_PAGAMENTO, id.toString(), pagamento);
 //		kafkaTemplate.send(confirmaPagamentoTopic, PARTITION_EATS_MONOLITO_PEDIDO, id.toString(), pagamento);
+		
+		
 		return new PagamentoDto(pagamento);
 	}
 

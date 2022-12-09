@@ -27,6 +27,7 @@ public class KafkaConsumerConfig {
 	public ConsumerFactory<String, Pagamento> consumerFactory() {
 		Map<String, Object> props = new HashMap<>();
 		props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
+		props.put(ConsumerConfig.GROUP_ID_CONFIG, "consumidor_id_config");
 		return new DefaultKafkaConsumerFactory<>(props, new StringDeserializer(), new JsonDeserializer<>(Pagamento.class));
 	}
 
