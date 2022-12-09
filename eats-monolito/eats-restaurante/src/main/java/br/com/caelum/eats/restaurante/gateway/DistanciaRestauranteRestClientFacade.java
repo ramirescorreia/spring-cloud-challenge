@@ -10,16 +10,17 @@ import feign.FeignException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+
+
 @Slf4j
-@Service
+@Service(value = "distRestService")
 @AllArgsConstructor
 public class DistanciaRestauranteRestClientFacade {
 	
 	@Autowired
 	private final DistanciaRestauranteFeignRestClientImpl restClient;
-	
+
 	public void criaDistanciaRestaurante(RestauranteRequest request) {
-		   
         try {
         	this.restClient.criaDistanciaRestaurante(request);
 		} catch (FeignException e) {

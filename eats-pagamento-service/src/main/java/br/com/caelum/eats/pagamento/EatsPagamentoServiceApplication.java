@@ -3,6 +3,7 @@ package br.com.caelum.eats.pagamento;
 import org.springframework.aop.scope.ScopedProxyFactoryBean;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.cloud.openfeign.FeignClientsConfiguration;
 import org.springframework.cloud.openfeign.HttpClient5DisabledConditions;
 import org.springframework.core.annotation.SynthesizedAnnotation;
@@ -49,6 +50,7 @@ import br.com.caelum.eats.pagamento.gateway.PedidoFeignRestClientImpl;
 	"brave.kafka.clients.TracingProducer",
 	"brave.kafka.clients.TracingConsumer",
 })
+@EnableFeignClients
 @SpringBootApplication
 public class EatsPagamentoServiceApplication {
 

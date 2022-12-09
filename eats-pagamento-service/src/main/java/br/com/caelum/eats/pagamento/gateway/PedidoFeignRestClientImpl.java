@@ -22,7 +22,8 @@ public class PedidoFeignRestClientImpl {
 	@Autowired
 	public PedidoFeignRestClientImpl(Decoder decoder, Encoder encoder, Client client) {
 		this.restClientInterface = Feign.builder().client(client).encoder(encoder).decoder(decoder)
-				.target(PedidoFeignRestClient.class, "http://application:8080");
+				.target(PedidoFeignRestClient.class, "eats-monolito");
+				//.target(PedidoFeignRestClient.class, "http://application:8080");
 	}
 	
 	@PutMapping("/pedidos/{pedidoId}/status")

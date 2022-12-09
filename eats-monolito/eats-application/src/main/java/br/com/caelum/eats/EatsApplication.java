@@ -4,6 +4,7 @@ import org.springframework.aop.scope.ScopedProxyFactoryBean;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.cloud.openfeign.FeignClientsConfiguration;
 import org.springframework.cloud.openfeign.HttpClient5DisabledConditions;
 import org.springframework.core.annotation.SynthesizedAnnotation;
@@ -55,6 +56,8 @@ import br.com.caelum.eats.restaurante.gateway.DistanciaRestauranteFeignRestClien
 	"br.com.caelum.eats.configuration",
 	"br.com.caelum.eats.restaurante"
 })
+
+@EnableFeignClients
 @SpringBootApplication
 public class EatsApplication extends SpringBootServletInitializer{
 

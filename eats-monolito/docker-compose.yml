@@ -32,8 +32,8 @@ services:
        ORACLE_USER: system
        ORACLE_PDB: orcl
     volumes:
-      #- "C:/temp/oracledata:/opt/oracle/oradata"
-      - "$HOME/.oradata:/opt/oracle/oradata"
+      - "C:/temp/oracledata:/opt/oracle/oradata"
+      #- "$HOME/.oradata:/opt/oracle/oradata"
     ports:
       - 1521:1521
       - 5500:5500
@@ -127,7 +127,7 @@ services:
       - ALLOW_ANONYMOUS_LOGIN=yes
     networks:
       - app
-      
+    
   kafka:
     container_name: kafka
     hostname: kafka
