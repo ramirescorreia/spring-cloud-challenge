@@ -29,8 +29,6 @@ import br.com.caelum.eats.pagamento.config.LoggingIntializer;
 @JdkProxyHint(types = {PostMapping.class, SynthesizedAnnotation.class})
 @JdkProxyHint(types = {PutMapping.class, SynthesizedAnnotation.class})
 
-@TypeHint(types = {Application.class, InstanceInfo.class, MyDataCenterInfo.class, ScopedProxyFactoryBean.class }, typeNames = {
-
 @TypeHint(types = {Application.class, InstanceInfo.class, MyDataCenterInfo.class, ScopedProxyFactoryBean.class}, typeNames = {
 	"com.netflix.discove,ry.shared.Application",
 	"com.netflix.appinfo.InstanceInfo",
