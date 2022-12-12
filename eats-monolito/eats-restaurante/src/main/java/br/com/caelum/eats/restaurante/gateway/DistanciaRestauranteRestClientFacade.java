@@ -1,11 +1,17 @@
 package br.com.caelum.eats.restaurante.gateway;
 
+import java.net.URI;
+import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.StringHttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.stereotype.Service;
 import org.springframework.util.concurrent.ListenableFuture;
 import org.springframework.util.concurrent.ListenableFutureCallback;
@@ -25,30 +31,40 @@ import lombok.extern.slf4j.Slf4j;
 public class DistanciaRestauranteRestClientFacade {
 	
 
+	@SuppressWarnings({ "deprecation", "unchecked" })
 	public void criaDistanciaRestaurante(RestauranteRequest request) {
 		AsyncRestTemplate restTemplate = new AsyncRestTemplate();
-	    String baseUrl = "http://distancia-service:8082";
+		restTemplate.setMessageConverters(getMessageConverters());
 	    HttpHeaders requestHeaders = new HttpHeaders();
 	    requestHeaders.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 
-	    HttpEntity entity = new HttpEntity("parameters", requestHeaders);
+	    HttpEntity entity = new HttpEntity(request, requestHeaders);
 	    final DeferredResult<String> result = new DeferredResult<>();
-	    ListenableFuture<ResponseEntity<Restaurante>> futureEntity = restTemplate.getForEntity(baseUrl, Restaurante.class);
+	    String url = "http://distancia-service:8082/restaurantes";
+	    ListenableFuture<URI> futureEntity = restTemplate.postForLocation(url, entity, Restaurante.class);
 
-	    futureEntity.addCallback(new ListenableFutureCallback<ResponseEntity<Restaurante>>() {
+	    futureEntity.addCallback(new ListenableFutureCallback<URI>() {
 	        @Override
-	        public void onSuccess(ResponseEntity<Restaurante> result) {
-	        	log.info("restuarante inserido com sucesso " + result.getBody().getId());
+	        public void onSuccess(URI uri) {
+	        	log.info("restuarante inserido com sucesso " + uri.getPath());
 	        }
 
 	        @Override
 	        public void onFailure(Throwable ex) {
 	            result.setErrorResult(ex.getMessage());
-	            log.error("Erro ao chamar API para grava��o de dist�ncia do restaurante.", ex);
-				throw new RuntimeException("Problema ao tentar cadastrar dist�ncia do restaurante. restauranteId: " + request.getId());
+	            log.error("Erro ao chamar API para gravação de distância do restaurante.", ex);
+				throw new RuntimeException("Problema ao tentar cadastrar distância do restaurante. restauranteId: " + request.getId());
 	        }
 	    });
 	}   
+	
+	private List<HttpMessageConverter<?>> getMessageConverters() {
+	    List<HttpMessageConverter<?>> converters =
+	            new ArrayList<>();
+	    converters.add(new MappingJackson2HttpMessageConverter());
+	    converters.add(new StringHttpMessageConverter(Charset.forName("UTF-8")));
+	    return converters;
+	}
 	
 	public void atualizaDistanciaRestaurante(RestauranteRequest request) {
 		   

@@ -5,6 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.core.annotation.SynthesizedAnnotation;
+import org.springframework.http.converter.StringHttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.nativex.hint.AotProxyHint;
 import org.springframework.nativex.hint.JdkProxyHint;
 import org.springframework.nativex.hint.TypeHint;
@@ -36,16 +38,17 @@ import br.com.caelum.eats.restaurante.gateway.domain.RestauranteRequest;
 @AotProxyHint(targetClass=AppConfiguration.class, interfaces={org.springframework.aop.scope.ScopedObject.class, 
         java.io.Serializable.class, org.springframework.aop.framework.AopInfrastructureBean.class})
 
-@TypeHint(types = {Application.class, InstanceInfo.class, MyDataCenterInfo.class, ScopedProxyFactoryBean.class, RestauranteRequest.class}, typeNames = {
+@TypeHint(types = {Application.class, InstanceInfo.class, MyDataCenterInfo.class, ScopedProxyFactoryBean.class, RestauranteRequest.class, 
+		MappingJackson2HttpMessageConverter.class, StringHttpMessageConverter.class}, typeNames = {
 	"com.netflix.discove,ry.shared.Application",
 	"com.netflix.appinfo.InstanceInfo",
 	"com.netflix.appinfo.InstanceInfo$PortWrapper",
 	"com.netflix.appinfo.DataCenterInfo",
 	"org.springframework.aop.scope",
-	"org.springframework.cloud.openfeign.FeignClientSpecification",
 	"org.springframework.web.bind.annotation",
 	"org.springframework.core.annotation",
 	"org.springframework.boot.autoconfigure.condition",
+	"org.springframework.http.converter",
 	"brave.kafka.clients.TracingProducer",
 	"brave.kafka.clients.TracingConsumer",
 	"br.com.caelum.eats.configuration",
