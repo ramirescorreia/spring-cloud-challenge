@@ -23,7 +23,6 @@ public class KafkaConsumerConfig {
 	@Value("${kafka.server.url}")
 	private String bootstrapAddress;
 
-	@Bean
 	public ConsumerFactory<String, Pagamento> consumerFactory() {
 		Map<String, Object> props = new HashMap<>();
 		props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);

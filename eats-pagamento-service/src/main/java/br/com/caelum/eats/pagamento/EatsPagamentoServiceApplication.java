@@ -31,6 +31,7 @@ import br.com.caelum.eats.pagamento.config.LoggingIntializer;
 
 @TypeHint(types = {Application.class, InstanceInfo.class, MyDataCenterInfo.class, ScopedProxyFactoryBean.class }, typeNames = {
 
+@TypeHint(types = {Application.class, InstanceInfo.class, MyDataCenterInfo.class, ScopedProxyFactoryBean.class}, typeNames = {
 	"com.netflix.discove,ry.shared.Application",
 	"com.netflix.appinfo.InstanceInfo",
 	"com.netflix.appinfo.InstanceInfo$PortWrapper",
