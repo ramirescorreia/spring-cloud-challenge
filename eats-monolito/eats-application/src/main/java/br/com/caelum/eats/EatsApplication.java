@@ -4,11 +4,13 @@ import org.springframework.aop.scope.ScopedProxyFactoryBean;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.context.annotation.Bean;
 import org.springframework.core.annotation.SynthesizedAnnotation;
-import org.springframework.http.converter.StringHttpMessageConverter;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.nativex.hint.AotProxyHint;
 import org.springframework.nativex.hint.JdkProxyHint;
+import org.springframework.nativex.hint.TypeAccess;
 import org.springframework.nativex.hint.TypeHint;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import com.netflix.appinfo.InstanceInfo;
 import com.netflix.appinfo.MyDataCenterInfo;
@@ -25,6 +28,7 @@ import com.netflix.discovery.shared.Application;
 import br.com.caelum.eats.configuration.AppConfiguration;
 import br.com.caelum.eats.configuration.LoggingIntializer;
 import br.com.caelum.eats.restaurante.gateway.domain.RestauranteRequest;
+import br.com.caelum.eats.restaurante.repository.entity.Restaurante;
 
 
 @JdkProxyHint(types = {PathVariable.class, SynthesizedAnnotation.class})
@@ -38,8 +42,7 @@ import br.com.caelum.eats.restaurante.gateway.domain.RestauranteRequest;
 @AotProxyHint(targetClass=AppConfiguration.class, interfaces={org.springframework.aop.scope.ScopedObject.class, 
         java.io.Serializable.class, org.springframework.aop.framework.AopInfrastructureBean.class})
 
-@TypeHint(types = {Application.class, InstanceInfo.class, MyDataCenterInfo.class, ScopedProxyFactoryBean.class, RestauranteRequest.class, 
-		MappingJackson2HttpMessageConverter.class, StringHttpMessageConverter.class}, typeNames = {
+@TypeHint(types = {Application.class, InstanceInfo.class, MyDataCenterInfo.class, ScopedProxyFactoryBean.class}, typeNames = {
 	"com.netflix.discove,ry.shared.Application",
 	"com.netflix.appinfo.InstanceInfo",
 	"com.netflix.appinfo.InstanceInfo$PortWrapper",
@@ -51,13 +54,22 @@ import br.com.caelum.eats.restaurante.gateway.domain.RestauranteRequest;
 	"org.springframework.http.converter",
 	"brave.kafka.clients.TracingProducer",
 	"brave.kafka.clients.TracingConsumer",
-	"br.com.caelum.eats.configuration",
-	"br.com.caelum.eats.restaurante"
+	"br.com.caelum.eats.configuration"
 })
-
+@TypeHint(types = RestauranteRequest.class, access = { TypeAccess.DECLARED_CONSTRUCTORS, TypeAccess.PUBLIC_METHODS })
+@TypeHint(types = Restaurante.class, access = { TypeAccess.DECLARED_CONSTRUCTORS, TypeAccess.PUBLIC_METHODS })
 @SpringBootApplication
 public class EatsApplication extends SpringBootServletInitializer{
 
+	@Bean
+	public WebClient webClient(WebClient.Builder builder) {
+		return builder
+				.baseUrl("http://distancia-service:8082")
+				.defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+				.build();
+	}
+	
+	
 	public static void main(String[] args) {
 		new SpringApplicationBuilder(EatsApplication.class).initializers(new LoggingIntializer()).run(args);
 	}
